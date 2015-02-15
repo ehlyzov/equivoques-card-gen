@@ -1,0 +1,81 @@
+<div class="row">
+    <div class="small-12 columns text-center">
+	<h1>Генератор пользовательских карт</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="medium-6 columns">
+	<h2>Обычная карта</h2>
+	<form action="gen-card" method="POST" id="reg-form">
+	    <div class="row">
+		<div class="small-3 columns">
+		    <label for="title" class="right inline">Заголовок</label>
+		</div>
+		<div class="small-9 columns">
+		    <input type="text" name="title" placeholder="Кино и всё такое" required>
+		</div>
+	    </div>
+
+	    <div class="row">
+		<div class="small-3 columns">
+		    <label for="title" class="right inline">Слова</label>
+		</div>
+		<div class="small-9 columns">
+		    <input type="text" name="words[]" placeholder="Решительный отказ" required>
+		</div>
+	    </div>
+	    
+	    <div class="row">
+		<div class="small-3 columns">
+		    <label for="title" class="right inline">Наоборот</label>
+		</div>
+		<div class="small-9 columns">
+		    <input type="text" name="words[]" placeholder="Навуходоносор" required>
+		</div>
+	    </div>
+
+	    <div class="row">
+		<div class="small-3 columns">
+		    <label for="title" class="right inline">Рисунок</label>
+		</div>
+		<div class="small-9 columns">
+		    <input type="text" name="words[]" placeholder="Билет">
+		</div>
+	    </div>
+
+	    <div class="row">
+		<div class="small-3 columns">
+		    <label for="title" class="right inline">Жесты</label>
+		</div>
+		<div class="small-9 columns">
+		    <input type="text" name="words[]" placeholder="Хлеб всему голова" required>
+		</div>
+	    </div>
+
+	    <div class="row">
+		<div class="small-3 columns">
+		    <label for="title" class="right inline">Да/Нет</label>
+		</div>
+		<div class="small-9 columns">
+		    <input type="text" name="words[]" placeholder="Ирония судьбы" required>
+		</div>
+	    </div>
+
+	    <div class="row">
+		<div class="small-3 columns">
+		    <label for="title" class="right inline">Автор</label>
+		</div>
+		<div class="small-9 columns">
+		    <input type="text" name="author" placeholder="Роман Пронин" required>
+		</div>
+	    </div>
+
+	    <button class="button success">Сгенерировать карту</button>
+	</form>
+    </div>
+    <div class="medium-6 columns">
+	<h2>Супер карта</h2>
+	<h4>(в разработке)</h4>
+    </div>
+
+</div>
