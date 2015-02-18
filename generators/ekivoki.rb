@@ -4,7 +4,7 @@ require "prawn/measurement_extensions"
 require 'pathname'
 
 module Generators
-  class Regular
+  class Ekivoki
 
     def self.data_dir
       @_data_dir ||= Pathname.new("./assets").expand_path
@@ -14,19 +14,20 @@ module Generators
       @_assets ||= {
         fonts: {
           regular: self.data_dir + 'KievitPro-Regular.ttf',
+          bold: self.data_dir + 'KievitPro-Bold.ttf',
           crc: self.data_dir + 'CRC55.ttf'
         },
         graphics: {
-          foreground: self.data_dir + 'Equivoques Inside CardReg.png',
-          background: self.data_dir + 'Equivoques Cover CardReg.png'
+          foreground: self.data_dir + 'Equivoques Inside CardEqui.png',
+          background: self.data_dir + 'Equivoques Cover CardEqui.png'
         }
       }
     end
 
     def initialize(options)
       @title = options[:title]
-      w,*ws = options[:words].map { |ws| ws.split(';') }
-      @cards = w.zip(*ws).map { |card| card.map(&:to_s) }
+      @rule = options[:rule]
+      @goal = options[:goal]
       @author = options[:author]
       @pdf = Prawn::Document.new(
         margin: [0,0],
@@ -34,37 +35,47 @@ module Generators
         page_size: [60.mm, 85.mm]
       )
 
-      @x = 26.mm
+      @config = [
+        {
+          text_box: {
+            text: @rule,
+            at: [5.mm, 70.mm],
+            width: 50.mm,
+            height: 20.mm,
+            valign: :bottom,
+            align: :center,
+            font_size: 8,
+            font_id: :regular
+          }          
+        },
 
-      @lines_y_offsets = [
-        70.mm,
-        57.mm,
-        47.mm,
-        37.mm,
-        27.mm
-      ]
-
-      @lines_heights = [
-        10.mm,
-        6.mm,
-        6.mm,
-        6.mm,
-        6.mm
-      ]
-
-      @cards.each do |words| 
+        {
+          text_box: {
+            text: @goal,
+            at: [5.mm, 45.mm],
+            width: 50.mm,
+            height: 20.mm,
+            valign: :top,            
+            align: :center,
+            font_size: 8,
+            font_id: :bold
+          }          
+        }
         
-        @pdf.image self.class.assets[:graphics][:foreground], width: 60.mm
+      ]
+      
+      @pdf.image self.class.assets[:graphics][:foreground], width: 60.mm
+      
+      print_title
 
-        print_title        
-        
-        @pdf.font(self.class.assets[:fonts][:regular], size: 8) do        
-          print_words(words)
+      @config.each do |hash|
+        method, parameters = hash.to_a.first
+        @pdf.font(self.class.assets[:fonts][parameters.delete(:font_id)], size: parameters.delete(:font_size)) do
+          @pdf.send(method, parameters.delete(:text), parameters)          
         end
-
-        print_author
-        
       end
+
+      print_author
       
       @pdf.image self.class.assets[:graphics][:background], width: 60.mm
     end
@@ -72,13 +83,13 @@ module Generators
     def render
       @pdf.render
     end
-
+    
     private
-
+    
     def print_title
       @pdf.font(self.class.assets[:fonts][:crc], size: 10) do      
         @pdf.text_box @title,
-          at: [5.mm, 78.mm],
+          at: [5.mm, 79.mm],
           valign: :top,
           align: :center,
           width: 50.mm,
@@ -96,18 +107,5 @@ module Generators
           height: 6.mm
       end
     end        
-    
-    def print_words(words)
-      words.each_with_index do |word, i|
-        @pdf.text_box word,
-          at: [@x, @lines_y_offsets[i]],
-          valign: :center,
-          align: :left,
-          overflow: :shrink_to_fit,
-          min_font_size: 5,
-          width: 27.mm,
-          height: @lines_heights[i]
-      end
-    end    
   end
 end

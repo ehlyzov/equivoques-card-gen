@@ -3,6 +3,7 @@ require 'sinatra/assetpack'
 
 module Generators; end
 require_relative 'generators/regular'
+require_relative 'generators/ekivoki'
 
 class App < Sinatra::Base
   
@@ -35,5 +36,11 @@ class App < Sinatra::Base
     content_type 'application/pdf'
     pdf = ::Generators::Regular.new(params)
     pdf.render
-  end    
+  end
+
+  post '/equi-card' do
+    content_type 'application/pdf'
+    pdf = ::Generators::Ekivoki.new(params)
+    pdf.render
+  end
 end
