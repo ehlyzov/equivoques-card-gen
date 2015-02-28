@@ -52,23 +52,21 @@ module Generators
         6.mm
       ]
 
-      @cards.each do |words| 
-        
+      @cards.each do |words|
+
         @pdf.image self.class.assets[:graphics][:foreground], width: 60.mm
 
-        print_title        
-        
-        @pdf.font(self.class.assets[:fonts][:regular], size: 8) do        
+        print_title
+
+        @pdf.font(self.class.assets[:fonts][:regular], size: 8) do
           print_words(words)
         end
 
         print_author
-        
+
       end
-      
-      @pdf.image self.class.assets[:graphics][:background], width: 60.mm
     end
-    
+
     def render
       @pdf.render
     end
@@ -76,7 +74,7 @@ module Generators
     private
 
     def print_title
-      @pdf.font(self.class.assets[:fonts][:crc], size: 10) do      
+      @pdf.font(self.class.assets[:fonts][:crc], size: 10) do
         @pdf.text_box @title,
           at: [5.mm, 78.mm],
           valign: :top,
@@ -87,7 +85,7 @@ module Generators
     end
 
     def print_author
-      @pdf.font(self.class.assets[:fonts][:regular], size: 8) do        
+      @pdf.font(self.class.assets[:fonts][:regular], size: 8) do
         @pdf.text_box @author,
           at: [5.mm, 14.mm],
           valign: :center,
@@ -95,8 +93,8 @@ module Generators
           width: 50.mm,
           height: 6.mm
       end
-    end        
-    
+    end
+
     def print_words(words)
       words.each_with_index do |word, i|
         @pdf.text_box word,
@@ -108,6 +106,6 @@ module Generators
           width: 27.mm,
           height: @lines_heights[i]
       end
-    end    
+    end
   end
 end

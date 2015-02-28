@@ -2,7 +2,7 @@
     <div class="small-12 columns text-center">
 	<h1>Генератор наборов карт</h1>
     </div>
-    <div class="small-12 columns">	
+    <div class="small-12 columns">
 	<p>Здесь вы можете создать собственный набор карт для игры "Экивоки". Это очень просто.</p>
 	<p>Заполните все поля, нажмите на кнопку "Создать карты", и вы получите ваш набор карточек в файле *pdf. Этот файл вы сможете скачать и распечатать на домашнем принтере или в типографии. </p>
 
@@ -10,8 +10,8 @@
 	    <ul class="no-bullet">
 		<li><a href="https://vk.com/ekivoki.game">https://vk.com/ekivoki.game</a></li>
 		<li><a href="https://www.facebook.com/ekivoki.ru">https://www.facebook.com/ekivoki.ru</a></li>
-		<li><a href="www.ekivoki.ru">www.ekivoki.ru</a></li>		
-	    </ul>	    
+		<li><a href="www.ekivoki.ru">www.ekivoki.ru</a></li>
+	    </ul>
 	</p>
 
 	<p>Наш ящик для писем и газет: <a href="mailto:game@ekivoki.ru">game@ekivoki.ru</a></p>
@@ -20,6 +20,11 @@
 <div class="row">
     <div class="medium-6 columns">
 	<h2>Обычные карточки</h2>
+	<div class="row">
+	    <div class="small-12 columns">
+		<a href="/gen-card/cover">Скачать рубашку</a>
+	    </div>
+	</div><br>
 	<form action="gen-card" method="POST" id="reg-form">
 	    <div class="row">
 		<div class="small-3 columns">
@@ -39,7 +44,7 @@
 		    <input type="text" name="words[]" placeholder="Решительный отказ" required>
 		</div>
 	    </div>
-	    
+
 	    <div class="row">
 		<div class="small-3 columns">
 		    <label for="title" class="right inline">Наоборот</label>
@@ -86,11 +91,17 @@
 		</div>
 	    </div>
 
-	    <button class="button success">Сгенерировать карту</button>
+	    <button class="button success">Создать карты</button>
 	</form>
     </div>
     <div class="medium-6 columns">
 	<h2>Карточки-экивоки</h2>
+	<div class="row">
+	    <div class="small-12 columns">
+		<a href="/equi-card/cover">Скачать рубашку</a>
+	    </div>
+	</div><br>
+
 	<form action="equi-card" method="POST" id="reg-form">
 	    <div class="row">
 		<div class="small-3 columns">
@@ -108,7 +119,7 @@
 		    <textarea name="rule" placeholder="Объясните словами. Пройдите вперед." required></textarea>
 		</div>
 	    </div>
-	    
+
 	    <div class="row">
 		<div class="small-3 columns">
 		    <label for="goal" class="right inline">Задание</label>
@@ -126,8 +137,8 @@
 		    <input type="text" name="author" placeholder="Роман Пронин" required>
 		</div>
 	    </div>
-	    
-	    <button class="button success">Сгенерировать карту</button>
+
+	    <button class="button success">Сгенерировать файл</button>
 	</form>
     </div>
 

@@ -46,7 +46,7 @@ module Generators
             align: :center,
             font_size: 8,
             font_id: :regular
-          }          
+          }
         },
 
         {
@@ -55,39 +55,37 @@ module Generators
             at: [5.mm, 45.mm],
             width: 50.mm,
             height: 20.mm,
-            valign: :top,            
+            valign: :top,
             align: :center,
             font_size: 8,
             font_id: :bold
-          }          
+          }
         }
-        
+
       ]
-      
+
       @pdf.image self.class.assets[:graphics][:foreground], width: 60.mm
-      
+
       print_title
 
       @config.each do |hash|
         method, parameters = hash.to_a.first
         @pdf.font(self.class.assets[:fonts][parameters.delete(:font_id)], size: parameters.delete(:font_size)) do
-          @pdf.send(method, parameters.delete(:text), parameters)          
+          @pdf.send(method, parameters.delete(:text), parameters)
         end
       end
 
       print_author
-      
-      @pdf.image self.class.assets[:graphics][:background], width: 60.mm
     end
-    
+
     def render
       @pdf.render
     end
-    
+
     private
-    
+
     def print_title
-      @pdf.font(self.class.assets[:fonts][:crc], size: 10) do      
+      @pdf.font(self.class.assets[:fonts][:crc], size: 10) do
         @pdf.text_box @title,
           at: [5.mm, 79.mm],
           valign: :top,
@@ -98,7 +96,7 @@ module Generators
     end
 
     def print_author
-      @pdf.font(self.class.assets[:fonts][:regular], size: 8) do        
+      @pdf.font(self.class.assets[:fonts][:regular], size: 8) do
         @pdf.text_box @author,
           at: [5.mm, 14.mm],
           valign: :center,
@@ -106,6 +104,6 @@ module Generators
           width: 50.mm,
           height: 6.mm
       end
-    end        
+    end
   end
 end
