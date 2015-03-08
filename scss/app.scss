@@ -1,6 +1,12 @@
 @import "settings";
 @import "foundation";
 
+textarea {
+  resize: none;
+  outline: none;
+  height: 6em;
+}
+
 // Or selectively include components
 // @import
 //   "foundation/components/accordion",

@@ -9157,3 +9157,9 @@ th.hide-for-touch {
     display: table-cell !important;
   }
 }
+/* line 4, ../../scss/app.scss */
+textarea {
+  resize: none;
+  outline: none;
+  height: 6em;
+}

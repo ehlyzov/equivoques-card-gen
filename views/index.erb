@@ -94,7 +94,7 @@
 	    <button class="button success">Создать карты</button>
 	</form>
     </div>
-    <div class="medium-6 columns">
+    <div class="medium-6 columns" ng-controller="CategoryListController" >
 	<h2>Карточки-экивоки</h2>
 	<div class="row">
 	    <div class="small-12 columns">
@@ -103,6 +103,16 @@
 	</div><br>
 
 	<form action="equi-card" method="POST" id="reg-form">
+
+	    <div class="row">
+		<div class="small-3 columns">
+		    <label for="category" class="right inline">Категория</label>
+		</div>
+		<div class="small-9 columns">
+	            <select ng-model="Category" ng-options="category[0] for category in categories"></select>
+		</div>
+	    </div>
+
 	    <div class="row">
 		<div class="small-3 columns">
 		    <label for="title" class="right inline">Заголовок</label>
@@ -116,7 +126,7 @@
 		    <label for="rule" class="right inline">Правила</label>
 		</div>
 		<div class="small-9 columns">
-		    <textarea name="rule" placeholder="Объясните словами. Пройдите вперед." required></textarea>
+		    <textarea name="rule" placeholder="Объясните словами. Пройдите вперед." ng-model="Rule" required></textarea>
 		</div>
 	    </div>
 

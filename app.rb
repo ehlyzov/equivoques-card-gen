@@ -18,7 +18,8 @@ class App < Sinatra::Base
 
     js :libs, [
       '/bower_components/jquery/dist/jquery.js',
-      '/bower_components/foundation/js/foundation.js'
+      '/bower_components/foundation/js/foundation.js',
+      '/bower_components/angular/angular.js'
     ]
 
     js :application, [
@@ -32,6 +33,12 @@ class App < Sinatra::Base
     erb :index
   end
 
+  get '/data.json' do
+    require 'yaml'
+    require 'json'
+    YAML.parse_file('data.yml').to_ruby.to_json
+  end
+  
   get '/gen-card/cover' do
     send_file 'public/reg_cover.pdf', filename: 'reg-card-cover.pdf'
   end
@@ -43,12 +50,14 @@ class App < Sinatra::Base
   post '/gen-card' do
     content_type 'application/pdf'
     pdf = ::Generators::Regular.new(params)
-    pdf.render
+    attachment( "cards.pdf" )
+    response.write(pdf.render)
   end
 
   post '/equi-card' do
     content_type 'application/pdf'
     pdf = ::Generators::Ekivoki.new(params)
-    pdf.render
+    attachment( "eq_card.pdf" )
+    response.write(pdf.render)
   end
 end
