@@ -7,10 +7,12 @@ require_relative 'generators/ekivoki'
 
 class App < Sinatra::Base
 
+  set :root, File.dirname(__FILE__)
+  
   register Sinatra::AssetPack
   assets do
     serve '/js', from: 'js'
-    serve '/bower_components', from: 'bower_components'
+    # serve '/bower_components', from: 'bower_components'
 
     js :modernizr, [
       '/bower_components/modernizr/modernizr.js',
