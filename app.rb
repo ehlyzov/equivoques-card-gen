@@ -52,14 +52,12 @@ class App < Sinatra::Base
   post '/gen-card' do
     content_type 'application/pdf'
     pdf = ::Generators::Regular.new(params)
-    attachment( "cards.pdf" )
-    response.write(pdf.render)
+    pdf.render
   end
 
   post '/equi-card' do
     content_type 'application/pdf'
     pdf = ::Generators::Ekivoki.new(params)
-    attachment( "eq_card.pdf" )
-    response.write(pdf.render)
+    pdf.render
   end
 end
