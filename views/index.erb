@@ -102,52 +102,52 @@
 	    </div>
 	</div><br>
 
-	<form action="equi-card" method="POST" id="reg-form">
-
-	    <div class="row">
-		<div class="small-3 columns">
-		    <label for="category" class="right inline">Категория</label>
+	<form action="equi-card" method="POST" id="reg-form" target="_blank">
+	    <div ng-repeat="card in formData.cards">
+		<div class="row">
+		    <div class="small-3 columns">
+			<label for="category" class="right inline">Категория</label>
+		    </div>
+		    <div class="small-9 columns">
+			<select ng-model="card.category" ng-options="label for label in category_labels track by label" ng-change="formData.selectCategory($index, card.category)" ></select>
+		    </div>
 		</div>
-		<div class="small-9 columns">
-	            <select ng-model="Category" ng-options="category[0] for category in categories"></select>
+
+		<div class="row">
+		    <div class="small-3 columns">
+			<label for="title" class="right inline">Заголовок</label>
+		    </div>
+		    <div class="small-9 columns">
+			<input type="text" name="cards[][title]" placeholder="Кино и всё такое" required ng-model="card.title">
+		    </div>
+		</div>
+		<div class="row">
+		    <div class="small-3 columns">
+			<label for="rule" class="right inline">Правила</label>
+		    </div>
+		    <div class="small-9 columns">
+			<textarea name="cards[][rule]"  placeholder="Объясните словами. Пройдите вперед." ng-model="card.rule" required></textarea>
+		    </div>
+		</div>
+
+		<div class="row">
+		    <div class="small-3 columns">
+			<label for="goal" class="right inline">Задание</label>
+		    </div>
+		    <div class="small-9 columns">
+			<textarea ng-model="card.goal" name="cards[][goal]"  placeholder="«Доктор Хаус»" required></textarea>
+		    </div>
 		</div>
 	    </div>
-
-	    <div class="row">
-		<div class="small-3 columns">
-		    <label for="title" class="right inline">Заголовок</label>
-		</div>
-		<div class="small-9 columns">
-		    <input type="text" name="title" placeholder="Кино и всё такое" required>
-		</div>
-	    </div>
-	    <div class="row">
-		<div class="small-3 columns">
-		    <label for="rule" class="right inline">Правила</label>
-		</div>
-		<div class="small-9 columns">
-		    <textarea name="rule" placeholder="Объясните словами. Пройдите вперед." ng-model="Rule" required></textarea>
-		</div>
-	    </div>
-
-	    <div class="row">
-		<div class="small-3 columns">
-		    <label for="goal" class="right inline">Задание</label>
-		</div>
-		<div class="small-9 columns">
-		    <textarea name="goal" placeholder="«Доктор Хаус»" required></textarea>
-		</div>
-	    </div>
-
 	    <div class="row">
 		<div class="small-3 columns">
 		    <label for="title" class="right inline">Автор</label>
 		</div>
 		<div class="small-9 columns">
-		    <input type="text" name="author" placeholder="Роман Пронин" required>
+		    <input type="text" name="author" ng-model="card.author" placeholder="Роман Пронин" required>
 		</div>
-	    </div>
-
+	    </div>	    
+	    <button class="button failure" type="button" ng-click="console.log('test'); formData.addCard()">Добавить карточку</button>
 	    <button class="button success">Сгенерировать файл</button>
 	</form>
     </div>

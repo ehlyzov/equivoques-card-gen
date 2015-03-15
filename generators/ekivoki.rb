@@ -25,9 +25,10 @@ module Generators
     end
 
     def initialize(options)
-      @title = options[:title]
-      @rule = options[:rule]
-      @goal = options[:goal]
+      @cards = options[:cards]
+      #@title = options[:title]
+      #@rule = options[:rule]
+      #@goal = options[:goal]
       @author = options[:author]
       @pdf = Prawn::Document.new(
         margin: [0,0],
@@ -38,7 +39,7 @@ module Generators
       @config = [
         {
           text_box: {
-            text: @rule,
+            text: :rule,
             at: [5.mm, 70.mm],
             width: 50.mm,
             height: 20.mm,
@@ -51,7 +52,7 @@ module Generators
 
         {
           text_box: {
-            text: @goal,
+            text: :goal,
             at: [5.mm, 45.mm],
             width: 50.mm,
             height: 20.mm,
@@ -64,18 +65,22 @@ module Generators
 
       ]
 
-      @pdf.image self.class.assets[:graphics][:foreground], width: 60.mm
+      @cards.each do |card| 
+        @pdf.image self.class.assets[:graphics][:foreground], width: 60.mm
 
-      print_title
+        print_title(card[:title])
 
-      @config.each do |hash|
-        method, parameters = hash.to_a.first
-        @pdf.font(self.class.assets[:fonts][parameters.delete(:font_id)], size: parameters.delete(:font_size)) do
-          @pdf.send(method, parameters.delete(:text), parameters)
+        @config.each do |hash|
+          require 'pry'
+          method, parameters = hash.to_a.first
+          parameters = parameters.dup
+          @pdf.font(self.class.assets[:fonts][parameters.delete(:font_id)], size: parameters.delete(:font_size)) do
+            @pdf.public_send(method, card[parameters.delete(:text)], parameters)
+          end
         end
-      end
 
-      print_author
+        print_author        
+      end
     end
 
     def render
@@ -84,9 +89,9 @@ module Generators
 
     private
 
-    def print_title
+    def print_title(title)
       @pdf.font(self.class.assets[:fonts][:crc], size: 10) do
-        @pdf.text_box @title,
+        @pdf.text_box title,
           at: [5.mm, 79.mm],
           valign: :top,
           align: :center,
