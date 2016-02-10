@@ -1,0 +1,174 @@
+body {
+      background: url(http://www.ekivoki.ru/templates/rsmetro/images/back.jpg) left top repeat #fff;
+    color: #d8dfdf;
+    font-size: 14px;
+    line-height: 18px;
+    font-family: Trebuchet MS, Helvetica CY, Sans-serif;
+}
+
+a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.header {
+      width: 960px;
+    height: 115px;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 30px;
+}
+.header .logo {
+  margin: 20px 0;
+  display: block;
+  width: 292px;
+  height: 88px;
+  position: absolute;
+  left: 50%;
+  margin-left: -146px;
+}
+.button_default {
+      background: #427ba0;
+    color: #fff;
+    padding: 7px 15px;
+    line-height: 32px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+.button_default:hover, .button_default:focus, .button_default:active, .button_default:visited {
+  color: #fff;
+  background: #396f92
+
+}
+.buttons .button_back {
+      background: #427ba0;
+    color: #fff;
+    padding: 7px 15px;
+    line-height: 32px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+.button_default2 {
+  color: #fff;
+  text-transform: uppercase;
+  background: #3D6C8A;
+
+    padding: 10px 15px;
+    line-height: 32px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 13px;
+}
+.button_default2:hover, .button_default2:focus, .button_default2:active, .button_default2:visited  {
+  color: #efebe0;
+}
+.header .buttons  {
+  float: left;
+  padding-top: 60px;
+}
+.soc {
+  float: right;
+  padding-top: 60px;
+}
+.soc a, .soc2 a {
+      margin: 0px 4px;
+}
+.custom-word {
+  position: absolute;
+  top: 0;
+    left: 50%;
+    margin-left: 118px;
+}
+.page-header {
+   
+    text-align: center;
+    margin-bottom: 20px;
+}
+.gen .page-header {
+   background: url(http://www.ekivoki.ru/templates/rsmetro/images/topmenu.png) center center no-repeat;
+}
+.gen img {
+  margin: 0 auto;
+  text-align: center;
+}
+.line-ek {
+  margin-bottom: 20px;
+}
+.page-header h1, .page-header h2 {
+    text-align: center;
+    background: url(http://www.ekivoki.ru/templates/rsmetro/images/back.jpg) left top repeat;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 10px;
+    font-weight: bold;
+        line-height: 24px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 21px;
+}
+.page-header h2 {
+    font-size: 28px;
+    text-align: center;
+    margin-left: 0;
+    text-transform: none;
+    background: #427ba0;
+    width: 100%;
+    margin: 0;
+    padding: 34px 0px 10px;
+    border-radius: 6px 6px 0 0;
+    font-weight: normal;
+}
+.footer {
+      background: url(http://www.ekivoki.ru/templates/rsmetro/images/topmenu.png) center top no-repeat;
+      height: 140px;
+      padding-top: 40px;
+}
+button.success, .button.success {
+      background-color: #f36e3d;
+    border-color: #f36e3d;
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        font-size: 14px;
+}
+button.success:hover, button.success:focus, .button.success:hover, .button.success:focus {
+  background: #f48359;
+}
+  label {
+    color: #efebe0
+  } 
+
+  fieldset {
+    border: 1px dashed #c9c6cc;
+    margin: 0 0 20px 0;
+  }
+fieldset p {
+  font-size: 14px;
+}
+  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
+       background-color: #3D6C8A;
+    border-color: #36627D;
+  }
+  ::-webkit-input-placeholder {color:#8ba9bc;}
+::-moz-placeholder            {color:#8ba9bc;}/* Firefox 19+ */
+:-moz-placeholder             {color:#8ba9bc;}/* Firefox 18- */
+:-ms-input-placeholder        {color:#8ba9bc;}
+
+
+.gencardbg {
+      background: #427ba0;
+    padding: 20px;
+    border-radius: 0 0 6px 6px;
+}
+button.success, .button.success{
+  margin: 0;
+}
+.failure {
+    background: none;
+    text-decoration: underline;
+}
+.failure:hover {
+  background: none;
+  text-decoration: none
+}

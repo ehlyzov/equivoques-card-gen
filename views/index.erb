@@ -1,31 +1,34 @@
-<div class="row">
-    <div class="small-12 columns text-center">
-	<h1>Генератор наборов карт</h1>
+<div class="header">  
+	<div class="buttons">
+	   <a class="button_back" href="http://ekivoki.ru">&larr; вернуться на основной сайт</a>
+	</div>
+	 <a class="logo" href="/">
+		<img src="http://www.ekivoki.ru/images/logo.png" alt="ekivoki.ru">	
+	 </a>
+	 <div class="custom-word"><img src="http://www.ekivoki.ru/images/newz.png" alt="" width="60"></div>
+	 <div class="soc">
+		<a title="мы в instagram" href="http://statigr.am/tag/экивоки" target="_blank"><img src="http://www.ekivoki.ru/images/ig.png" alt="мы в instagram"></a><a title="мы в facebook" href="https://www.facebook.com/ekivoki.ru" target="_blank"><img src="http://www.ekivoki.ru/images/vb.png" alt="мы в facebook"></a><a title="мы в vkontakte" href="http://vk.com/ekivoki.game" target="_blank"><img src="http://www.ekivoki.ru/images/vk.png" alt="мы в vkontakte"></a>
+	</div>
+</div>
+
+
+<div class="row gen">
+    <div class="small-12 columns text-center page-header">
+		<h1 class="title">Генератор наборов карт</h1>
     </div>
     <div class="small-12 columns">
 	<p>Здесь вы можете создать собственный набор карт для игры "Экивоки". Это очень просто.</p>
 	<p>Заполните все поля, нажмите на кнопку "Создать карты", и вы получите ваш набор карточек в файле *pdf. Этот файл вы сможете скачать и распечатать на домашнем принтере или в типографии. </p>
-
-	<p>Хотите обмениваться карточками с другими игроками?
-	    <ul class="no-bullet">
-		<li><a href="https://vk.com/ekivoki.game">https://vk.com/ekivoki.game</a></li>
-		<li><a href="https://www.facebook.com/ekivoki.ru">https://www.facebook.com/ekivoki.ru</a></li>
-		<li><a href="www.ekivoki.ru">www.ekivoki.ru</a></li>
-	    </ul>
-	</p>
-
-	<p>Наш ящик для писем и газет: <a href="mailto:game@ekivoki.ru">game@ekivoki.ru</a></p>
     </div>
+    <div class="small-12 text-center line-ek">
+    <img align="middle" src="http://www.ekivoki.ru/templates/rsmetro/images/topmenu.png" alt="">
+</div>
 </div>
 <div class="row">
-    <div class="medium-6 columns">
-	<h2>Обычные карточки</h2>
-	<div class="row">
-	    <div class="small-12 columns">
-		<a href="/gen-card/cover">Скачать рубашку</a>
-	    </div>
-	</div><br>
-	<form action="gen-card" method="POST" id="reg-form">
+    <div class="medium-6 columns page-header">
+	<h2 class="title">Обычные карточки</h2>
+	
+	<form action="gen-card" method="POST" id="reg-form" class="gencardbg">
 	    <div class="row">
 		<div class="small-3 columns">
 		    <label for="title" class="right inline">Заголовок</label>
@@ -35,7 +38,7 @@
 		</div>
 	    </div>
 	    <fieldset>
-		<p>Введите слова и выражения через точку с запятой; каждое новое слово или выражение начинайте с большой буквы</p>
+		<p class="text-left">Введите слова и выражения через точку с запятой; каждое новое слово или выражение начинайте с большой буквы</p>
 	    <div class="row">
 		<div class="small-3 columns">
 		    <label for="title" class="right inline">Слова</label>
@@ -90,19 +93,22 @@
 		    <input type="text" name="author" placeholder="Роман Пронин" required>
 		</div>
 	    </div>
-
-	    <button class="button success">Создать карты</button>
+	      <div class="row">
+	      	
+	    <div class="small-6 columns text-left" style="margin-top:10px">
+		<a class="button_default2" href="/gen-card/cover">Скачать рубашку</a>
+	    </div>
+	
+		<div class="small-6 columns text-right">
+	    <button class="button success ">Создать карты</button>
+	</div>
+</div>
 	</form>
     </div>
-    <div class="medium-6 columns" ng-controller="CategoryListController" >
-	<h2>Карточки-экивоки</h2>
-	<div class="row">
-	    <div class="small-12 columns">
-		<a href="/equi-card/cover">Скачать рубашку</a>
-	    </div>
-	</div><br>
+    <div class="medium-6 columns page-header gen" ng-controller="CategoryListController" >
+	<h2 class="title">Карточки-экивоки</h2>
 
-	<form action="equi-card" method="POST" id="reg-form" target="_blank">
+	<form action="equi-card" method="POST" id="reg-form" target="_blank" class="gencardbg">
 	    <div ng-repeat="card in formData.cards">
 		<div class="row">
 		    <div class="small-3 columns">
@@ -146,10 +152,41 @@
 		<div class="small-9 columns">
 		    <input type="text" name="author" ng-model="card.author" placeholder="Роман Пронин" required>
 		</div>
-	    </div>	    
-	    <button class="button failure" type="button" ng-click="console.log('test'); formData.addCard()">Добавить карточку</button>
+	    </div>	
+	    <div class="row">
+		<div class="small-12 columns text-right">
+		 <button class="failure" type="button" ng-click="console.log('test'); formData.addCard()">Добавить карточку</button>
+		 	</div>
+	    </div>	
+	    <div class="row">
+
+  <div class="small-5 columns text-left" style="margin-top:10px">
+		<a class="button_default2" href="/equi-card/cover">Скачать рубашку</a>
+	    </div>
+
+		<div class="small-7 columns text-right">
+		    
 	    <button class="button success">Сгенерировать файл</button>
+		</div>
+	    </div>	    
 	</form>
+
     </div>
 
+</div>
+<div class="footer">
+<div class="row">
+<div class="medium-6 columns">
+	<p>Хотите обмениваться карточками с другими игроками?
+	     <div class="soc2">
+		<a title="мы в facebook" href="https://www.facebook.com/ekivoki.ru" target="_blank"><img src="http://www.ekivoki.ru/images/vb.png" alt="мы в facebook"></a><a title="мы в vkontakte" href="http://vk.com/ekivoki.game" target="_blank"><img src="http://www.ekivoki.ru/images/vk.png" alt="мы в vkontakte"></a>
+	</div>
+	</p>
+
+	
+</div>
+<div class="medium-6 columns" style="text-align:right;">
+	<p>Наш ящик для писем и газет: <a href="mailto:game@ekivoki.ru">game@ekivoki.ru</a></p>
+</div>	
+</div>
 </div>
